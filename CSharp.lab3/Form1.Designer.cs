@@ -43,6 +43,7 @@
             lblBrightness = new Label();
             lblDirectionBrightness = new Label();
             tbDirectionBrightness = new TrackBar();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)tbDirectionBlue).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbDirectionRed).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbDirectionGreen).BeginInit();
@@ -185,11 +186,21 @@
             tbDirectionBrightness.TabIndex = 12;
             tbDirectionBrightness.Scroll += tbDirectionBrightness_Scroll;
             // 
+            // button1
+            // 
+            button1.Location = new Point(22, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 15;
+            button1.Text = "Задание";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(lblBrightness);
             Controls.Add(lblDirectionBrightness);
             Controls.Add(tbDirectionBrightness);
@@ -233,5 +244,6 @@
         private Label lblBrightness;
         private Label lblDirectionBrightness;
         private TrackBar tbDirectionBrightness;
+        private Button button1;
     }
 }
