@@ -44,6 +44,10 @@
             lblDirectionBrightness = new Label();
             tbDirectionBrightness = new TrackBar();
             button1 = new Button();
+            pnlHSV = new Panel();
+            pnlRGB = new Panel();
+            label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)tbDirectionBlue).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbDirectionRed).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbDirectionGreen).BeginInit();
@@ -195,11 +199,47 @@
             button1.Text = "Задание";
             button1.UseVisualStyleBackColor = true;
             // 
+            // pnlHSV
+            // 
+            pnlHSV.Location = new Point(224, 58);
+            pnlHSV.Name = "pnlHSV";
+            pnlHSV.Size = new Size(141, 223);
+            pnlHSV.TabIndex = 16;
+            // 
+            // pnlRGB
+            // 
+            pnlRGB.Location = new Point(410, 58);
+            pnlRGB.Name = "pnlRGB";
+            pnlRGB.Size = new Size(141, 223);
+            pnlRGB.TabIndex = 17;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(224, 35);
+            label1.Name = "label1";
+            label1.Size = new Size(37, 20);
+            label1.TabIndex = 18;
+            label1.Text = "HSV";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(410, 35);
+            label2.Name = "label2";
+            label2.Size = new Size(37, 20);
+            label2.TabIndex = 19;
+            label2.Text = "RGB";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(pnlRGB);
+            Controls.Add(pnlHSV);
             Controls.Add(button1);
             Controls.Add(lblBrightness);
             Controls.Add(lblDirectionBrightness);
@@ -245,5 +285,9 @@
         private Label lblDirectionBrightness;
         private TrackBar tbDirectionBrightness;
         private Button button1;
+        private Panel pnlHSV;
+        private Panel pnlRGB;
+        private Label label1;
+        private Label label2;
     }
 }
