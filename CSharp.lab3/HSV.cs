@@ -6,43 +6,50 @@ namespace CSharp.lab3
 {
     public class HSV
     {
-        private PictureBox pnlHSV;
-        private TrackBar tbDirectionBlue;
-        private TrackBar tbDirectionRed;
-        private TrackBar tbDirectionGreen;
+        private Color currentColor;
+        private TrackBar tbBlue;
+        private TrackBar tbRed;
+        private TrackBar tbGreen;
+        private PictureBox displayPictureBox;
 
-        public HSV(PictureBox pnlHSV, TrackBar tbDirectionBlue, TrackBar tbDirectionRed, TrackBar tbDirectionGreen) 
+        public HSV(TrackBar blue, TrackBar red, TrackBar green, PictureBox pictureBox)
         {
-            this.pnlHSV = pnlHSV; 
-            this.tbDirectionBlue = tbDirectionBlue; 
-            this.tbDirectionRed = tbDirectionRed; 
-            this.tbDirectionGreen = tbDirectionGreen;
+            this.tbBlue = blue;
+            this.tbRed = red;
+            this.tbGreen = green;
+            this.displayPictureBox = pictureBox;
+
+            InitializeTrackBars();
         }
 
-        public void InitializeTrackBars()
+        private void InitializeTrackBars()
         {
-            tbDirectionBlue.Minimum = 0;
-            tbDirectionBlue.Maximum = 255;
-            tbDirectionBlue.ValueChanged += TrackBar_ValueChanged;
+            tbBlue.Minimum = 0;
+            tbBlue.Maximum = 360;
 
-            tbDirectionRed.Minimum = 0;
-            tbDirectionRed.Maximum = 255;
-            tbDirectionRed.ValueChanged += TrackBar_ValueChanged;
+            tbRed.Minimum = 0;
+            tbRed.Maximum = 360;
 
-            tbDirectionGreen.Minimum = 0;
-            tbDirectionGreen.Maximum = 255;
-            tbDirectionGreen.ValueChanged += TrackBar_ValueChanged;
-
+            tbGreen.Minimum = 0;
+            tbGreen.Maximum = 360;
         }
 
-        private void TrackBar_ValueChanged(object sender, EventArgs e)
+        public void UpdateColor(Color baseColor, int hueValue)
         {
+            currentColor = baseColor;
+            UpdatePictureBoxColor();
+        }
 
-            pnlHSV.BackColor = Color.FromArgb(
-                tbDirectionBlue.Value,
-                tbDirectionRed.Value,
-                tbDirectionGreen.Value
-            );
+        private void UpdatePictureBoxColor()
+        {
+            if (displayPictureBox != null)
+            {              
+                displayPictureBox.BackColor = Color.FromArgb(
+                    tbRed.Value % 255,
+                    tbGreen.Value % 255,
+                    tbBlue.Value % 255
+                );
+            }
         }
     }
 }
