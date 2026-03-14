@@ -10,13 +10,15 @@ namespace CSharp.lab3
         private TrackBar tbBlue;
         private TrackBar tbRed;
         private TrackBar tbGreen;
+        private TrackBar tbHSV;
         private PictureBox displayPictureBox;
 
-        public HSV(TrackBar blue, TrackBar red, TrackBar green, PictureBox pictureBox)
+        public HSV(TrackBar HSV, PictureBox pictureBox)
         {
-            this.tbBlue = blue;
-            this.tbRed = red;
-            this.tbGreen = green;
+       //     this.tbBlue = blue;
+        //    this.tbRed = red;
+        //    this.tbGreen = green;
+            this.tbHSV = HSV;
             this.displayPictureBox = pictureBox;
 
             InitializeTrackBars();
@@ -24,20 +26,24 @@ namespace CSharp.lab3
 
         private void InitializeTrackBars()
         {
+            tbHSV.Minimum = 0;
+            tbHSV.Maximum = 360;
+
             tbBlue.Minimum = 0;
-            tbBlue.Maximum = 360;
+            tbBlue.Maximum = 255;
 
             tbRed.Minimum = 0;
-            tbRed.Maximum = 360;
+            tbRed.Maximum = 255;
 
             tbGreen.Minimum = 0;
-            tbGreen.Maximum = 360;
+            tbGreen.Maximum = 255;
         }
 
         public void UpdateColor(Color baseColor, int hueValue)
         {
             currentColor = baseColor;
-            UpdatePictureBoxColor();
+            
+           // UpdatePictureBoxColor();
         }
 
         private void UpdatePictureBoxColor()
