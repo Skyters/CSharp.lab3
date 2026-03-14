@@ -24,7 +24,9 @@ namespace CSharp.lab3
 
         private void tbDirectionBrightness_Scroll(object sender, EventArgs e)
         {
-            lblDirectionBrightness.Text = $"{tbDirectionBrightness.Value}";
+            lblDirectionBrightness.Text = $"{tbDirectionValue.Value}";
         }
     }
+
+
 }

@@ -40,9 +40,9 @@
             lblSaturation = new Label();
             lblDirectionSaturation = new Label();
             tbDirectionSaturation = new TrackBar();
-            lblBrightness = new Label();
+            lblValue = new Label();
             lblDirectionBrightness = new Label();
-            tbDirectionBrightness = new TrackBar();
+            tbDirectionValue = new TrackBar();
             button1 = new Button();
             pnlHSV = new Panel();
             pnlRGB = new Panel();
@@ -52,198 +52,207 @@
             ((System.ComponentModel.ISupportInitialize)tbDirectionRed).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbDirectionGreen).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbDirectionSaturation).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)tbDirectionBrightness).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tbDirectionValue).BeginInit();
             SuspendLayout();
             // 
             // tbDirectionBlue
             // 
-            tbDirectionBlue.Location = new Point(12, 186);
+            tbDirectionBlue.Location = new Point(10, 140);
+            tbDirectionBlue.Margin = new Padding(3, 2, 3, 2);
             tbDirectionBlue.Maximum = 360;
             tbDirectionBlue.Name = "tbDirectionBlue";
-            tbDirectionBlue.Size = new Size(159, 56);
+            tbDirectionBlue.Size = new Size(139, 45);
             tbDirectionBlue.TabIndex = 0;
             tbDirectionBlue.Scroll += tbDirection_Scroll;
             // 
             // lblDirectionBlue
             // 
             lblDirectionBlue.AutoSize = true;
-            lblDirectionBlue.Location = new Point(177, 186);
+            lblDirectionBlue.Location = new Point(155, 140);
             lblDirectionBlue.Name = "lblDirectionBlue";
-            lblDirectionBlue.Size = new Size(23, 20);
+            lblDirectionBlue.Size = new Size(18, 15);
             lblDirectionBlue.TabIndex = 1;
             lblDirectionBlue.Text = "0°";
             // 
             // tbDirectionRed
             // 
-            tbDirectionRed.Location = new Point(12, 271);
+            tbDirectionRed.Location = new Point(10, 203);
+            tbDirectionRed.Margin = new Padding(3, 2, 3, 2);
             tbDirectionRed.Maximum = 360;
             tbDirectionRed.Name = "tbDirectionRed";
-            tbDirectionRed.Size = new Size(159, 56);
+            tbDirectionRed.Size = new Size(139, 45);
             tbDirectionRed.TabIndex = 2;
             tbDirectionRed.Scroll += tbDirectionRed_Scroll;
             // 
             // lblDirectionRed
             // 
             lblDirectionRed.AutoSize = true;
-            lblDirectionRed.Location = new Point(177, 271);
+            lblDirectionRed.Location = new Point(155, 203);
             lblDirectionRed.Name = "lblDirectionRed";
-            lblDirectionRed.Size = new Size(23, 20);
+            lblDirectionRed.Size = new Size(18, 15);
             lblDirectionRed.TabIndex = 3;
             lblDirectionRed.Text = "0°";
             // 
             // tbDirectionGreen
             // 
-            tbDirectionGreen.Location = new Point(12, 342);
+            tbDirectionGreen.Location = new Point(10, 256);
+            tbDirectionGreen.Margin = new Padding(3, 2, 3, 2);
             tbDirectionGreen.Maximum = 360;
             tbDirectionGreen.Name = "tbDirectionGreen";
-            tbDirectionGreen.Size = new Size(159, 56);
+            tbDirectionGreen.Size = new Size(139, 45);
             tbDirectionGreen.TabIndex = 4;
             // 
             // lblDirectionGreen
             // 
             lblDirectionGreen.AutoSize = true;
-            lblDirectionGreen.Location = new Point(177, 342);
+            lblDirectionGreen.Location = new Point(155, 256);
             lblDirectionGreen.Name = "lblDirectionGreen";
-            lblDirectionGreen.Size = new Size(23, 20);
+            lblDirectionGreen.Size = new Size(18, 15);
             lblDirectionGreen.TabIndex = 5;
             lblDirectionGreen.Text = "0°";
             // 
             // lblBlue
             // 
             lblBlue.AutoSize = true;
-            lblBlue.Location = new Point(22, 163);
+            lblBlue.Location = new Point(19, 122);
             lblBlue.Name = "lblBlue";
-            lblBlue.Size = new Size(54, 20);
+            lblBlue.Size = new Size(43, 15);
             lblBlue.TabIndex = 6;
             lblBlue.Text = "Синий";
             // 
             // lblRed
             // 
             lblRed.AutoSize = true;
-            lblRed.Location = new Point(22, 245);
+            lblRed.Location = new Point(19, 184);
             lblRed.Name = "lblRed";
-            lblRed.Size = new Size(71, 20);
+            lblRed.Size = new Size(56, 15);
             lblRed.TabIndex = 7;
             lblRed.Text = "Красный";
             // 
             // lblGreen
             // 
             lblGreen.AutoSize = true;
-            lblGreen.Location = new Point(22, 319);
+            lblGreen.Location = new Point(19, 239);
             lblGreen.Name = "lblGreen";
-            lblGreen.Size = new Size(70, 20);
+            lblGreen.Size = new Size(56, 15);
             lblGreen.TabIndex = 8;
             lblGreen.Text = "Зелёный";
             // 
             // lblSaturation
             // 
             lblSaturation.AutoSize = true;
-            lblSaturation.Location = new Point(216, 319);
+            lblSaturation.Location = new Point(189, 239);
             lblSaturation.Name = "lblSaturation";
-            lblSaturation.Size = new Size(114, 20);
+            lblSaturation.Size = new Size(92, 15);
             lblSaturation.TabIndex = 11;
             lblSaturation.Text = "Насыщённость";
             // 
             // lblDirectionSaturation
             // 
             lblDirectionSaturation.AutoSize = true;
-            lblDirectionSaturation.Location = new Point(371, 342);
+            lblDirectionSaturation.Location = new Point(325, 256);
             lblDirectionSaturation.Name = "lblDirectionSaturation";
-            lblDirectionSaturation.Size = new Size(17, 20);
+            lblDirectionSaturation.Size = new Size(13, 15);
             lblDirectionSaturation.TabIndex = 10;
             lblDirectionSaturation.Text = "0";
             // 
             // tbDirectionSaturation
             // 
-            tbDirectionSaturation.Location = new Point(206, 342);
+            tbDirectionSaturation.Location = new Point(180, 256);
+            tbDirectionSaturation.Margin = new Padding(3, 2, 3, 2);
             tbDirectionSaturation.Maximum = 100;
             tbDirectionSaturation.Name = "tbDirectionSaturation";
-            tbDirectionSaturation.Size = new Size(159, 56);
+            tbDirectionSaturation.Size = new Size(139, 45);
             tbDirectionSaturation.TabIndex = 9;
             tbDirectionSaturation.Value = 1;
             tbDirectionSaturation.Scroll += tbDirectionSaturation_Scroll;
             // 
-            // lblBrightness
+            // lblValue
             // 
-            lblBrightness.AutoSize = true;
-            lblBrightness.Location = new Point(410, 319);
-            lblBrightness.Name = "lblBrightness";
-            lblBrightness.Size = new Size(64, 20);
-            lblBrightness.TabIndex = 14;
-            lblBrightness.Text = "Яркость";
+            lblValue.AutoSize = true;
+            lblValue.Location = new Point(359, 239);
+            lblValue.Name = "lblValue";
+            lblValue.Size = new Size(51, 15);
+            lblValue.TabIndex = 14;
+            lblValue.Text = "Яркость";
             // 
             // lblDirectionBrightness
             // 
             lblDirectionBrightness.AutoSize = true;
-            lblDirectionBrightness.Location = new Point(565, 342);
+            lblDirectionBrightness.Location = new Point(494, 256);
             lblDirectionBrightness.Name = "lblDirectionBrightness";
-            lblDirectionBrightness.Size = new Size(17, 20);
+            lblDirectionBrightness.Size = new Size(13, 15);
             lblDirectionBrightness.TabIndex = 13;
             lblDirectionBrightness.Text = "0";
             // 
-            // tbDirectionBrightness
+            // tbDirectionValue
             // 
-            tbDirectionBrightness.Location = new Point(400, 342);
-            tbDirectionBrightness.Maximum = 100;
-            tbDirectionBrightness.Name = "tbDirectionBrightness";
-            tbDirectionBrightness.Size = new Size(159, 56);
-            tbDirectionBrightness.TabIndex = 12;
-            tbDirectionBrightness.Scroll += tbDirectionBrightness_Scroll;
+            tbDirectionValue.Location = new Point(350, 256);
+            tbDirectionValue.Margin = new Padding(3, 2, 3, 2);
+            tbDirectionValue.Maximum = 100;
+            tbDirectionValue.Name = "tbDirectionValue";
+            tbDirectionValue.Size = new Size(139, 45);
+            tbDirectionValue.TabIndex = 12;
+            tbDirectionValue.Scroll += tbDirectionBrightness_Scroll;
             // 
             // button1
             // 
-            button1.Location = new Point(22, 12);
+            button1.Location = new Point(19, 9);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(82, 22);
             button1.TabIndex = 15;
             button1.Text = "Задание";
             button1.UseVisualStyleBackColor = true;
             // 
             // pnlHSV
             // 
-            pnlHSV.Location = new Point(224, 58);
+            pnlHSV.BackColor = SystemColors.Control;
+            pnlHSV.Location = new Point(196, 44);
+            pnlHSV.Margin = new Padding(3, 2, 3, 2);
             pnlHSV.Name = "pnlHSV";
-            pnlHSV.Size = new Size(141, 223);
+            pnlHSV.Size = new Size(123, 167);
             pnlHSV.TabIndex = 16;
             // 
             // pnlRGB
             // 
-            pnlRGB.Location = new Point(410, 58);
+            pnlRGB.Location = new Point(359, 44);
+            pnlRGB.Margin = new Padding(3, 2, 3, 2);
             pnlRGB.Name = "pnlRGB";
-            pnlRGB.Size = new Size(141, 223);
+            pnlRGB.Size = new Size(123, 167);
             pnlRGB.TabIndex = 17;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(224, 35);
+            label1.Location = new Point(196, 26);
             label1.Name = "label1";
-            label1.Size = new Size(37, 20);
+            label1.Size = new Size(29, 15);
             label1.TabIndex = 18;
             label1.Text = "HSV";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(410, 35);
+            label2.Location = new Point(359, 26);
             label2.Name = "label2";
-            label2.Size = new Size(37, 20);
+            label2.Size = new Size(29, 15);
             label2.TabIndex = 19;
             label2.Text = "RGB";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(574, 338);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(pnlRGB);
             Controls.Add(pnlHSV);
             Controls.Add(button1);
-            Controls.Add(lblBrightness);
+            Controls.Add(lblValue);
             Controls.Add(lblDirectionBrightness);
-            Controls.Add(tbDirectionBrightness);
+            Controls.Add(tbDirectionValue);
             Controls.Add(lblSaturation);
             Controls.Add(lblDirectionSaturation);
             Controls.Add(tbDirectionSaturation);
@@ -256,13 +265,14 @@
             Controls.Add(tbDirectionRed);
             Controls.Add(lblDirectionBlue);
             Controls.Add(tbDirectionBlue);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)tbDirectionBlue).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbDirectionRed).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbDirectionGreen).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbDirectionSaturation).EndInit();
-            ((System.ComponentModel.ISupportInitialize)tbDirectionBrightness).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tbDirectionValue).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -281,9 +291,9 @@
         private Label lblSaturation;
         private Label lblDirectionSaturation;
         private TrackBar tbDirectionSaturation;
-        private Label lblBrightness;
+        private Label lblValue;
         private Label lblDirectionBrightness;
-        private TrackBar tbDirectionBrightness;
+        private TrackBar tbDirectionValue;
         private Button button1;
         private Panel pnlHSV;
         private Panel pnlRGB;
