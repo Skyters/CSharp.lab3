@@ -4,11 +4,13 @@ namespace CSharp.lab3
     {
 
         private HSV hsv;
+        private Colo rgb;
 
         public Form1()
         {
             InitializeComponent();
             hsv = new HSV(tbHue, tbSaturation, tbBrightness, pbHSV);
+            rgb = new Colo(tbBlue, tbGreen, tbRed, tbSaturation, tbBrightness, pbRGB);
         }
 
         private void tbSaturation_Scroll(object sender, EventArgs e)
@@ -27,6 +29,21 @@ namespace CSharp.lab3
         {
             lblDirectionHue.Text = $"{tbHue.Value}°";
             hsv.UpdateColor();
+        }
+
+        private void tbBlue_Scroll(object sender, EventArgs e)
+        {
+            rgb.UpdateColor();
+        }
+
+        private void tbRed_Scroll(object sender, EventArgs e)
+        {
+            rgb.UpdateColor();
+        }
+
+        private void tbGreen_Scroll(object sender, EventArgs e)
+        {
+            rgb.UpdateColor();
         }
     }
 }

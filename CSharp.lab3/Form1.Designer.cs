@@ -46,6 +46,7 @@
             lblNameBlue = new Label();
             lblNameRed = new Label();
             lblNameGreen = new Label();
+            pbRGB = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)tbSaturation).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbBrightness).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbHSV).BeginInit();
@@ -53,6 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)tbBlue).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbRed).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbGreen).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbRGB).BeginInit();
             SuspendLayout();
             // 
             // tbSaturation
@@ -170,23 +172,29 @@
             // tbBlue
             // 
             tbBlue.Location = new Point(710, 95);
+            tbBlue.Maximum = 255;
             tbBlue.Name = "tbBlue";
             tbBlue.Size = new Size(130, 56);
             tbBlue.TabIndex = 24;
+            tbBlue.Scroll += tbBlue_Scroll;
             // 
             // tbRed
             // 
             tbRed.Location = new Point(710, 168);
+            tbRed.Maximum = 255;
             tbRed.Name = "tbRed";
             tbRed.Size = new Size(130, 56);
             tbRed.TabIndex = 25;
+            tbRed.Scroll += tbRed_Scroll;
             // 
             // tbGreen
             // 
             tbGreen.Location = new Point(710, 230);
+            tbGreen.Maximum = 255;
             tbGreen.Name = "tbGreen";
             tbGreen.Size = new Size(130, 56);
             tbGreen.TabIndex = 26;
+            tbGreen.Scroll += tbGreen_Scroll;
             // 
             // lblNameBlue
             // 
@@ -215,11 +223,20 @@
             lblNameGreen.TabIndex = 29;
             lblNameGreen.Text = "Зелёный";
             // 
+            // pbRGB
+            // 
+            pbRGB.Location = new Point(464, 182);
+            pbRGB.Name = "pbRGB";
+            pbRGB.Size = new Size(113, 185);
+            pbRGB.TabIndex = 30;
+            pbRGB.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(pbRGB);
             Controls.Add(lblNameGreen);
             Controls.Add(lblNameRed);
             Controls.Add(lblNameBlue);
@@ -248,6 +265,7 @@
             ((System.ComponentModel.ISupportInitialize)tbBlue).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbRed).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbGreen).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbRGB).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -271,5 +289,6 @@
         private Label lblNameBlue;
         private Label lblNameRed;
         private Label lblNameGreen;
+        private PictureBox pbRGB;
     }
 }
