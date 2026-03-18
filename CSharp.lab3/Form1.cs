@@ -4,13 +4,13 @@ namespace CSharp.lab3
     {
 
         private HSV hsv;
-        private Colo rgb;
+        private RGB rgb;
 
         public Form1()
         {
             InitializeComponent();
             hsv = new HSV(tbHue, tbSaturation, tbBrightness, pbHSV);
-            rgb = new Colo(tbBlue, tbGreen, tbRed, tbSaturation, tbBrightness, pbRGB);
+           // rgb = new RGB(tbHue, tbSaturation, tbBrightness, pbRGB);
         }
 
         private void tbSaturation_Scroll(object sender, EventArgs e)
