@@ -47,7 +47,7 @@ namespace CSharp.lab3
 
         public void UpdateColor()
         {
-
+            var hue = (tbBlue.Value, tbRed.Value, tbGreen.Value);
             
             int saturation = tbSaturation.Value;
             int brightness = tbBrightness.Value;
@@ -56,47 +56,16 @@ namespace CSharp.lab3
             int green = tbGreen.Value;
             int blue = tbBlue.Value;
 
-            var hsv = RgbToHsv(red, green, blue);
-            
-
-
-            Color color = HsvToRgb(hsv.Hue, saturation, brightness);
-            displayPictureBox.BackColor = color;
+            //Color color = HsvToRgb(hue, saturation, brightness);
+            //displayPictureBox.BackColor = color;
         }
 
-        private Color HsvToRgb(int hue, double saturation, double brightness)
-        {
-            int h = hue;
-            double s = saturation;
-            double v = brightness;
 
-            int hi = Convert.ToInt32(Math.Floor(h / 60)) % 6;
 
-            double vmin = ((100 - s) * v) / 100;
-            double a = (v - vmin) * ((h % 60) / 60);
-            double vinc = vmin + a;
-            double vdec = v - a;
+//        private Color RgbToHsv(int hue, double saturation, double brightness)
+  //      {
 
-            double blue = 0;
-            double green = 0; 
-            double red = 0;
-
-            switch (hi)
-            {
-                case 0: red = v; green = vinc; blue = vmin; break;
-                case 1: red = vdec; green = v; blue = vmin; break;
-                case 2: red = vmin; green = v; blue = vinc; break;
-                case 3: red = vmin; green = vdec; blue = v; break;
-                case 4: red = vinc; green = vmin; blue = v; break;
-                case 5: red = v; green = vmin; blue = vdec; break;
-            }
-
-            return Color.FromArgb(
-                (int)(red * 2.55),
-                (int)(green * 2.55),
-                (int)(blue * 2.55)
-            );
-        }
+       // }
 
     }
 }
