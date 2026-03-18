@@ -172,16 +172,18 @@
             // tbBlue
             // 
             tbBlue.Location = new Point(710, 95);
-            tbBlue.Maximum = 255;
+            tbBlue.Maximum = 360;
+            tbBlue.Minimum = 240;
             tbBlue.Name = "tbBlue";
             tbBlue.Size = new Size(130, 56);
             tbBlue.TabIndex = 24;
+            tbBlue.Value = 240;
             tbBlue.Scroll += tbBlue_Scroll;
             // 
             // tbRed
             // 
             tbRed.Location = new Point(710, 168);
-            tbRed.Maximum = 255;
+            tbRed.Maximum = 120;
             tbRed.Name = "tbRed";
             tbRed.Size = new Size(130, 56);
             tbRed.TabIndex = 25;
@@ -190,10 +192,12 @@
             // tbGreen
             // 
             tbGreen.Location = new Point(710, 230);
-            tbGreen.Maximum = 255;
+            tbGreen.Maximum = 240;
+            tbGreen.Minimum = 240;
             tbGreen.Name = "tbGreen";
             tbGreen.Size = new Size(130, 56);
             tbGreen.TabIndex = 26;
+            tbGreen.Value = 240;
             tbGreen.Scroll += tbGreen_Scroll;
             // 
             // lblNameBlue

@@ -12,8 +12,8 @@ public class RGB
     public RGB(TrackBar Blue, TrackBar Red, TrackBar Green, TrackBar saturation, TrackBar brightness, PictureBox pbRGB)
     {
         this.tbBlue = Blue;
-        this.tbGreen = Red;
-        this.tbRed = Green;
+        this.tbGreen = Green;
+        this.tbRed = Red;
         this.tbSaturation = saturation;
         this.tbBrightness = brightness;
         this.displayPictureBox = pbRGB;
@@ -24,13 +24,13 @@ public class RGB
     private void InitializeTrackBarsHSV()
     {
         tbBlue.Minimum = 0;
-        tbBlue.Maximum = 255;
+        tbBlue.Maximum = 240;
 
         tbGreen.Minimum = 0;
-        tbGreen.Maximum = 255;
+        tbGreen.Maximum = 120;
 
         tbRed.Minimum = 0;
-        tbRed.Maximum = 255;
+        tbRed.Maximum = 360;
 
         tbSaturation.Minimum = 0;
         tbSaturation.Maximum = 100;
@@ -44,6 +44,8 @@ public class RGB
         tbSaturation.Value = 100;
         tbBrightness.Value = 100;
 
+        
+
         UpdateColor();
     }
 
@@ -55,13 +57,19 @@ public class RGB
         int saturation = tbSaturation.Value;
         int brightness = tbBrightness.Value;
 
-        Color color = HsvToRgb(blue, red, green, saturation, brightness);
+        Color color = HsvToRgb(red, blue, green, saturation, brightness);
         displayPictureBox.BackColor = color;
     }
+   
 
-    private Color HsvToRgb(int red, int blue, int green, double saturation, double brightness)
+    public double colorRgb(double red, double blue, double green)
+    {       
+        return (red + blue + green );
+    }
+
+    private Color HsvToRgb(double red, double blue, double green, double saturation, double brightness)
     {
-        double h = 
+        var h = colorRgb(red, blue, green);
         double s = saturation;
         double v = brightness;
 
@@ -72,22 +80,22 @@ public class RGB
         double vinc = vmin + a;
         double vdec = v - a;
 
-        double r = 0, g = 0, b = 0;
+        red = 0; green = 0; blue = 0;
 
         switch (hi)
         {
-            case 0: r = v; g = vinc; b = vmin; break;
-            case 1: r = vdec; g = v; b = vmin; break;
-            case 2: r = vmin; g = v; b = vinc; break;
-            case 3: r = vmin; g = vdec; b = v; break;
-            case 4: r = vinc; g = vmin; b = v; break;
-            case 5: r = v; g = vmin; b = vdec; break;
+            case 0: red = v; green = vinc; blue = vmin; break;
+            case 1: red = vdec; green = v; blue = vmin; break;
+            case 2: red = vmin; green = v; blue = vinc; break;
+            case 3: red = vmin; green = vdec; blue = v; break;
+            case 4: red = vinc; green = vmin; blue = v; break;
+            case 5: red = v; green = vmin; blue = vdec; break;
         }
 
         return Color.FromArgb(
-            (int)(r * 2.55),
-            (int)(g * 2.55),
-            (int)(b * 2.55)
+            (int)(red * 2.55),
+            (int)(green * 2.55),
+            (int)(blue * 2.55)
         );
     }
 }
