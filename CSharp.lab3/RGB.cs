@@ -2,6 +2,7 @@
 
 public class RGB
 {
+    private TrackBar tbHue;
     private TrackBar tbBlue;
     private TrackBar tbGreen;
     private TrackBar tbRed;
@@ -9,11 +10,12 @@ public class RGB
     private TrackBar tbBrightness;
     private PictureBox displayPictureBox;
 
-    public RGB(TrackBar Blue, TrackBar Red, TrackBar Green, TrackBar saturation, TrackBar brightness, PictureBox pbRGB)
+    public RGB(TrackBar hue, TrackBar blue, TrackBar red, TrackBar green, TrackBar saturation, TrackBar brightness, PictureBox pbRGB)
     {
-        this.tbBlue = Blue;
-        this.tbGreen = Green;
-        this.tbRed = Red;
+        tbHue = hue;
+        this.tbBlue = blue;
+        this.tbGreen = green;
+        this.tbRed = red;
         this.tbSaturation = saturation;
         this.tbBrightness = brightness;
         this.displayPictureBox = pbRGB;
@@ -23,6 +25,9 @@ public class RGB
 
     private void InitializeTrackBarsHSV()
     {
+        tbHue.Minimum = 0;
+        tbHue.Maximum = 360;
+
         tbBlue.Minimum = 0;
         tbBlue.Maximum = 240;
 
@@ -38,49 +43,49 @@ public class RGB
         tbBrightness.Minimum = 0;
         tbBrightness.Maximum = 100;
 
+        tbHue.Value = 0;
         tbBlue.Value = 0;
         tbGreen.Value = 0;
         tbRed.Value = 0;
         tbSaturation.Value = 100;
         tbBrightness.Value = 100;
 
-        
-
         UpdateColor();
     }
 
     public void UpdateColor()
     {
+        int hue = tbHue.Value;
         int blue = tbBlue.Value;
         int green = tbGreen.Value;
         int red = tbRed.Value;
         int saturation = tbSaturation.Value;
         int brightness = tbBrightness.Value;
 
-        Color color = HsvToRgb(red, blue, green, saturation, brightness);
+        Color color = HsvToRgb(hue, red, blue, green, saturation, brightness);
         displayPictureBox.BackColor = color;
     }
    
 
-    public double colorRgb(double red, double blue, double green)
+    public double Hue(double red, double blue, double green)
     {       
-        return (red + blue + green );
+        return (red + blue + green);
     }
 
-    private Color HsvToRgb(double red, double blue, double green, double saturation, double brightness)
+    private Color HsvToRgb(double hue, double red, double blue, double green, double saturation, double brightness)
     {
-        var h = colorRgb(red, blue, green);
+        hue = Hue(red, blue, green);
         double s = saturation;
         double v = brightness;
 
-        int hi = Convert.ToInt32(Math.Floor(h / 60)) % 6;
+        int hi = Convert.ToInt32(Math.Floor(hue / 60)) % 6;
 
         double vmin = ((100 - s) * v) / 100;
-        double a = (v - vmin) * ((h % 60) / 60);
+        double a = (v - vmin) * ((hue % 60) / 60);
         double vinc = vmin + a;
         double vdec = v - a;
 
-        red = 0; green = 0; blue = 0;
+        red = 0; blue = 0; green = 0;
 
         switch (hi)
         {

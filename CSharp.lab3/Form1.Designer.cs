@@ -47,6 +47,9 @@
             lblNameRed = new Label();
             lblNameGreen = new Label();
             pbRGB = new PictureBox();
+            lblDirectionRed = new Label();
+            lblDirectionGreen = new Label();
+            lblDirectionBlue = new Label();
             ((System.ComponentModel.ISupportInitialize)tbSaturation).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbBrightness).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbHSV).BeginInit();
@@ -171,7 +174,7 @@
             // 
             // tbBlue
             // 
-            tbBlue.Location = new Point(710, 95);
+            tbBlue.Location = new Point(718, 178);
             tbBlue.Maximum = 360;
             tbBlue.Minimum = 240;
             tbBlue.Name = "tbBlue";
@@ -182,7 +185,7 @@
             // 
             // tbRed
             // 
-            tbRed.Location = new Point(710, 168);
+            tbRed.Location = new Point(718, 251);
             tbRed.Maximum = 120;
             tbRed.Name = "tbRed";
             tbRed.Size = new Size(130, 56);
@@ -191,9 +194,9 @@
             // 
             // tbGreen
             // 
-            tbGreen.Location = new Point(710, 230);
+            tbGreen.Location = new Point(718, 96);
             tbGreen.Maximum = 240;
-            tbGreen.Minimum = 240;
+            tbGreen.Minimum = 120;
             tbGreen.Name = "tbGreen";
             tbGreen.Size = new Size(130, 56);
             tbGreen.TabIndex = 26;
@@ -203,7 +206,7 @@
             // lblNameBlue
             // 
             lblNameBlue.AutoSize = true;
-            lblNameBlue.Location = new Point(710, 72);
+            lblNameBlue.Location = new Point(718, 155);
             lblNameBlue.Name = "lblNameBlue";
             lblNameBlue.Size = new Size(54, 20);
             lblNameBlue.TabIndex = 27;
@@ -212,7 +215,7 @@
             // lblNameRed
             // 
             lblNameRed.AutoSize = true;
-            lblNameRed.Location = new Point(710, 145);
+            lblNameRed.Location = new Point(718, 228);
             lblNameRed.Name = "lblNameRed";
             lblNameRed.Size = new Size(71, 20);
             lblNameRed.TabIndex = 28;
@@ -221,7 +224,7 @@
             // lblNameGreen
             // 
             lblNameGreen.AutoSize = true;
-            lblNameGreen.Location = new Point(711, 207);
+            lblNameGreen.Location = new Point(719, 73);
             lblNameGreen.Name = "lblNameGreen";
             lblNameGreen.Size = new Size(70, 20);
             lblNameGreen.TabIndex = 29;
@@ -235,11 +238,41 @@
             pbRGB.TabIndex = 30;
             pbRGB.TabStop = false;
             // 
+            // lblDirectionRed
+            // 
+            lblDirectionRed.AutoSize = true;
+            lblDirectionRed.Location = new Point(854, 251);
+            lblDirectionRed.Name = "lblDirectionRed";
+            lblDirectionRed.Size = new Size(17, 20);
+            lblDirectionRed.TabIndex = 31;
+            lblDirectionRed.Text = "0";
+            // 
+            // lblDirectionGreen
+            // 
+            lblDirectionGreen.AutoSize = true;
+            lblDirectionGreen.Location = new Point(854, 96);
+            lblDirectionGreen.Name = "lblDirectionGreen";
+            lblDirectionGreen.Size = new Size(17, 20);
+            lblDirectionGreen.TabIndex = 32;
+            lblDirectionGreen.Text = "0";
+            // 
+            // lblDirectionBlue
+            // 
+            lblDirectionBlue.AutoSize = true;
+            lblDirectionBlue.Location = new Point(854, 178);
+            lblDirectionBlue.Name = "lblDirectionBlue";
+            lblDirectionBlue.Size = new Size(17, 20);
+            lblDirectionBlue.TabIndex = 33;
+            lblDirectionBlue.Text = "0";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(lblDirectionBlue);
+            Controls.Add(lblDirectionGreen);
+            Controls.Add(lblDirectionRed);
             Controls.Add(pbRGB);
             Controls.Add(lblNameGreen);
             Controls.Add(lblNameRed);
@@ -294,5 +327,8 @@
         private Label lblNameRed;
         private Label lblNameGreen;
         private PictureBox pbRGB;
+        private Label lblDirectionRed;
+        private Label lblDirectionGreen;
+        private Label lblDirectionBlue;
     }
 }

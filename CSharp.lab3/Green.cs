@@ -12,7 +12,7 @@ namespace CSharp.lab3
 
         public Green(int value, TrackBar tbGreen)
         {
-            this.value = value;
+            this.value = tbGreen.Value = value;
             this.tbGreen = tbGreen;
         }
 
