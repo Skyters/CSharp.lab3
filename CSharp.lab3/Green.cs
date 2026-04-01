@@ -12,26 +12,22 @@ namespace CSharp.lab3
 
         public Green(int value, TrackBar tbGreen)
         {
-            this.value = tbGreen.Value = value;
+            this.value = value;
             this.tbGreen = tbGreen;
         }
 
-        public static Green operator +(int value, Green instance)
+        public static Green operator +(int value, Green green)
         {
-            var newValue = instance.value + value;
+            var newValue = Math.Clamp(green.value + value, 0, 255);
 
-            var green = new Green(newValue, instance.tbGreen);
-
-            return green;
+            return new Green(newValue, green.tbGreen);
         }
 
-        public static Green operator -(int value, Green instance)
+        public static Green operator -(int value, Green green)
         {
-            var newValue = instance.value - value;
+            var newValue = Math.Clamp(green.value - value, 0, 255);
 
-            var green = new Green(newValue, instance.tbGreen);
-
-            return green;
+            return new Green(newValue, green.tbGreen);
         }
     }
 }

@@ -50,7 +50,7 @@ public class RGB
     public void UpdateColor()
     {
         int hue = tbHue.Value;
-        int blue = tbBlue.Value;
+        var blue = new Blue(tbBlue.Value, tbBlue);
         int green = tbGreen.Value;
         int red = tbRed.Value;
         int saturation = tbSaturation.Value;

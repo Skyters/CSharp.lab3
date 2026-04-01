@@ -15,22 +15,18 @@ namespace CSharp.lab3
             this.tbRed = tbRed;
         }
 
-        public static Red operator +(int value, Red instance)
+        public static Red operator +(int value, Red red)
         {
-            var newValue = instance.value + value;
+            var newValue = Math.Clamp(red.value + value, 0, 255);
 
-            var red = new Red(newValue, instance.tbRed);
-
-            return red;
+            return new Red(newValue, red.tbRed);
         }
 
-        public static Red operator -(int value, Red instance)
+        public static Red operator -(int value, Red red)
         {
-            var newValue = instance.value - value;
+            var newValue = Math.Clamp(red.value - value, 0, 255);
 
-            var red = new Red(newValue, instance.tbRed);
-
-            return red;
+            return new Red(newValue, red.tbRed);
         }
     }
 }

@@ -16,22 +16,18 @@ namespace CSharp.lab3
             this.tbBlue = tbBlue;
         }
 
-        public static Blue operator+(int value, Blue instance)
+        public static Blue operator+(int value, Blue blue)
         {
-            var newValue = instance.value + value;
+            var newValue = Math.Clamp(blue.value + value, 0, 255);
 
-            var blue = new Blue(newValue, instance.tbBlue);
-
-            return blue;
+            return new Blue(newValue, blue.tbBlue);
         }
 
-        public static Blue operator -(int value, Blue instance)
+        public static Blue operator -(int value, Blue blue)
         {
-            var newValue = instance.value - value;
+            var newValue = Math.Clamp(blue.value - value, 0, 255);
 
-            var blue = new Blue(newValue, instance.tbBlue);
-
-            return blue;
+            return new Blue(newValue, blue.tbBlue);
         }
     }
 }
