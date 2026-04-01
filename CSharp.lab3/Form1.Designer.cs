@@ -174,19 +174,17 @@
             // 
             // tbBlue
             // 
-            tbBlue.Location = new Point(718, 178);
-            tbBlue.Maximum = 360;
-            tbBlue.Minimum = 240;
+            tbBlue.Location = new Point(720, 264);
+            tbBlue.Maximum = 255;
             tbBlue.Name = "tbBlue";
             tbBlue.Size = new Size(130, 56);
             tbBlue.TabIndex = 24;
-            tbBlue.Value = 240;
             tbBlue.Scroll += tbBlue_Scroll;
             // 
             // tbRed
             // 
-            tbRed.Location = new Point(718, 251);
-            tbRed.Maximum = 120;
+            tbRed.Location = new Point(720, 100);
+            tbRed.Maximum = 255;
             tbRed.Name = "tbRed";
             tbRed.Size = new Size(130, 56);
             tbRed.TabIndex = 25;
@@ -194,19 +192,17 @@
             // 
             // tbGreen
             // 
-            tbGreen.Location = new Point(718, 96);
-            tbGreen.Maximum = 240;
-            tbGreen.Minimum = 120;
+            tbGreen.Location = new Point(720, 182);
+            tbGreen.Maximum = 255;
             tbGreen.Name = "tbGreen";
             tbGreen.Size = new Size(130, 56);
             tbGreen.TabIndex = 26;
-            tbGreen.Value = 240;
             tbGreen.Scroll += tbGreen_Scroll;
             // 
             // lblNameBlue
             // 
             lblNameBlue.AutoSize = true;
-            lblNameBlue.Location = new Point(718, 155);
+            lblNameBlue.Location = new Point(720, 241);
             lblNameBlue.Name = "lblNameBlue";
             lblNameBlue.Size = new Size(54, 20);
             lblNameBlue.TabIndex = 27;
@@ -215,7 +211,7 @@
             // lblNameRed
             // 
             lblNameRed.AutoSize = true;
-            lblNameRed.Location = new Point(718, 228);
+            lblNameRed.Location = new Point(720, 77);
             lblNameRed.Name = "lblNameRed";
             lblNameRed.Size = new Size(71, 20);
             lblNameRed.TabIndex = 28;
@@ -224,7 +220,7 @@
             // lblNameGreen
             // 
             lblNameGreen.AutoSize = true;
-            lblNameGreen.Location = new Point(719, 73);
+            lblNameGreen.Location = new Point(721, 159);
             lblNameGreen.Name = "lblNameGreen";
             lblNameGreen.Size = new Size(70, 20);
             lblNameGreen.TabIndex = 29;
@@ -241,7 +237,7 @@
             // lblDirectionRed
             // 
             lblDirectionRed.AutoSize = true;
-            lblDirectionRed.Location = new Point(854, 251);
+            lblDirectionRed.Location = new Point(856, 100);
             lblDirectionRed.Name = "lblDirectionRed";
             lblDirectionRed.Size = new Size(17, 20);
             lblDirectionRed.TabIndex = 31;
@@ -250,7 +246,7 @@
             // lblDirectionGreen
             // 
             lblDirectionGreen.AutoSize = true;
-            lblDirectionGreen.Location = new Point(854, 96);
+            lblDirectionGreen.Location = new Point(856, 182);
             lblDirectionGreen.Name = "lblDirectionGreen";
             lblDirectionGreen.Size = new Size(17, 20);
             lblDirectionGreen.TabIndex = 32;
@@ -259,7 +255,7 @@
             // lblDirectionBlue
             // 
             lblDirectionBlue.AutoSize = true;
-            lblDirectionBlue.Location = new Point(854, 178);
+            lblDirectionBlue.Location = new Point(856, 264);
             lblDirectionBlue.Name = "lblDirectionBlue";
             lblDirectionBlue.Size = new Size(17, 20);
             lblDirectionBlue.TabIndex = 33;

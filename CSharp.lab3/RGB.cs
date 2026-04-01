@@ -1,4 +1,5 @@
 ﻿using CSharp.lab3;
+using System.Diagnostics.Eventing.Reader;
 
 public class RGB
 {
@@ -29,26 +30,19 @@ public class RGB
         tbHue.Maximum = 360;
 
         tbBlue.Minimum = 0;
-        tbBlue.Maximum = 240;
+        tbBlue.Maximum = 255;
 
         tbGreen.Minimum = 0;
-        tbGreen.Maximum = 120;
+        tbGreen.Maximum = 255;
 
         tbRed.Minimum = 0;
-        tbRed.Maximum = 360;
+        tbRed.Maximum = 255;
 
         tbSaturation.Minimum = 0;
         tbSaturation.Maximum = 100;
 
         tbBrightness.Minimum = 0;
         tbBrightness.Maximum = 100;
-
-        tbHue.Value = 0;
-        tbBlue.Value = 0;
-        tbGreen.Value = 0;
-        tbRed.Value = 0;
-        tbSaturation.Value = 100;
-        tbBrightness.Value = 100;
 
         UpdateColor();
     }
@@ -62,7 +56,7 @@ public class RGB
         int saturation = tbSaturation.Value;
         int brightness = tbBrightness.Value;
 
-        Color color = HsvToRgb(hue, red, blue, green, saturation, brightness);
+        Color color = RgbToHsv(hue, red, blue, green, saturation, brightness);
         displayPictureBox.BackColor = color;
     }
    
@@ -72,35 +66,52 @@ public class RGB
         return (red + blue + green);
     }
 
-    private Color HsvToRgb(double hue, double red, double blue, double green, double saturation, double brightness)
+    private Color RgbToHsv(double hue, double red, double blue, double green, double saturation, double brightness)
     {
         hue = Hue(red, blue, green);
-        double s = saturation;
-        double v = brightness;
+        double max = Math.Max(hue, hue);
+        double min = Math.Min(hue, hue);
+        
 
-        int hi = Convert.ToInt32(Math.Floor(hue / 60)) % 6;
-
-        double vmin = ((100 - s) * v) / 100;
-        double a = (v - vmin) * ((hue % 60) / 60);
-        double vinc = vmin + a;
-        double vdec = v - a;
-
-        red = 0; blue = 0; green = 0;
-
-        switch (hi)
+        if (max == min)
         {
-            case 0: red = v; green = vinc; blue = vmin; break;
-            case 1: red = vdec; green = v; blue = vmin; break;
-            case 2: red = vmin; green = v; blue = vinc; break;
-            case 3: red = vmin; green = vdec; blue = v; break;
-            case 4: red = vinc; green = vmin; blue = v; break;
-            case 5: red = v; green = vmin; blue = vdec; break;
+            if (max == red && green >= blue) 
+            {
+                hue = (60 * (green - blue) / (max - min)) + 0;
+            }
+
+            else if  (max == red && green < blue)
+            {
+                hue = (60 * (green - blue) / (max - min)) + 360;
+            }
+
+            else if (max == green)
+            {
+                hue = (60 * (blue - red) / (max - min)) + 120;
+            }
+
+            else if(max == blue)
+            {
+                hue = (60 * (red - green) / (max - min)) + 240;
+            }
+
+            else if (max == 0)
+            {
+                saturation = 0;
+            }
+
+            else
+            {
+                saturation = 1 - min / max;
+            }
+
+            brightness = max;
         }
 
         return Color.FromArgb(
-            (int)(red * 2.55),
-            (int)(green * 2.55),
-            (int)(blue * 2.55)
+            (int)(red ),
+            (int)(green),
+            (int)(blue)
         );
     }
 }
