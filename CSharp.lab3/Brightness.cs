@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CSharp.lab3
 {
@@ -9,33 +7,32 @@ namespace CSharp.lab3
         private int value;
         private TrackBar tbBrightness;
 
-        public Brightness(int value, TrackBar tbRed)
+        public int Value => value;
+
+        public Brightness(int value, TrackBar tbBrightness)
         {
-            this.value = value;
-            this.tbBrightness = tbRed;
+            this.value = Math.Clamp(value, 0, 100);
+            this.tbBrightness = tbBrightness;
         }
 
-        public static Brightness operator +(int value, Brightness brightness)
+        private Brightness WithValue(int newValue)
         {
-            var newValue = Math.Clamp(brightness.value + value, 0, 100);
-
-            return new Brightness(newValue, brightness.tbBrightness);
+            var clamped = Math.Clamp(newValue, 0, 100);
+            tbBrightness.Value = clamped;
+            return new Brightness(clamped, tbBrightness);
         }
 
-        public static Brightness operator -(int value, Brightness brightness)
-        {
-            var newValue = Math.Clamp(brightness.value - value, 0, 100);
+        public static Brightness operator +(Brightness brightness, int delta)
+            => brightness.WithValue(brightness.value + delta);
 
-            return new Brightness(newValue, brightness.tbBrightness);
-        }
+        public static Brightness operator +(int delta, Brightness brightness)
+            => brightness.WithValue(brightness.value + delta);
 
-        public void InitializeTrackBars()
-        {
+        public static Brightness operator -(Brightness brightness, int delta)
+            => brightness.WithValue(brightness.value - delta);
 
-            tbBrightness.Minimum = 0;
-            tbBrightness.Maximum = 100;
+        public static Brightness operator -(int delta, Brightness brightness)
+            => brightness.WithValue(delta - brightness.value);
 
-            tbBrightness.Value = 100;
-        }
     }
 }

@@ -58,5 +58,10 @@ namespace CSharp.lab3
             lblDirectionSaturation.Text = $"{tbSaturation.Value}%";
             lblDirectionBrightness.Text = $"{tbBrightness.Value}%";
         }
+
+        private void bnTask_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Цвет заданный в пространстве HSV, а также под каждую характеристику отдельный тип. Реализовать операции:\r\n\r\nДобавление/вычитание красного цвета\r\nДобавление/вычитание синего цвета\r\nДобавление/вычитание зеленого цвета\r\nДобавление/вычитание насыщености\r\nДобавление/вычитание яркости\r\nПеревод в RGB");
+        }
     }
 }

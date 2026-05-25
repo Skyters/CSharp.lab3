@@ -10,7 +10,7 @@ public class RGB
     private TrackBar tbBrightness;
     private PictureBox displayPictureBox;
 
-    public RGB(TrackBar blue, TrackBar red, TrackBar green, TrackBar hue, TrackBar saturation, TrackBar brightness, PictureBox pbHSVandRGB)
+    public RGB(TrackBar blue, TrackBar red, TrackBar green, TrackBar hue, TrackBar saturation, TrackBar brightness,  PictureBox pbRGB)
     {
         this.tbBlue = blue;
         this.tbGreen = green;
@@ -18,7 +18,7 @@ public class RGB
         this.tbHue = hue;
         this.tbSaturation = saturation;
         this.tbBrightness = brightness;
-        this.displayPictureBox = pbHSVandRGB;
+        this.displayPictureBox = pbRGB;
 
         InitializeTrackBars();
     }
@@ -40,16 +40,15 @@ public class RGB
 
         displayPictureBox.BackColor = Color.FromArgb(red.Value, green.Value, blue.Value);
 
-        RgbToHsv(red.Value, green.Value, blue.Value,
-                 out int hue, out int saturation, out int brightness);
+        RgbToHsv(red.Value, green.Value, blue.Value, out int hue, out int saturation, out int brightness);
+
+        var sat = new Saturation(Math.Clamp(saturation, 0, 100), tbSaturation) + 0;
+        var bri = new Brightness(Math.Clamp(brightness, 0, 100), tbBrightness) + 0;
 
         tbHue.Value = Math.Clamp(hue, tbHue.Minimum, tbHue.Maximum);
-        tbSaturation.Value = Math.Clamp(saturation, tbSaturation.Minimum, tbSaturation.Maximum);
-        tbBrightness.Value = Math.Clamp(brightness, tbBrightness.Minimum, tbBrightness.Maximum);
     }
 
-    private void RgbToHsv(int r, int g, int b,
-                          out int hue, out int saturation, out int brightness)
+    private void RgbToHsv(int r, int g, int b, out int hue, out int saturation, out int brightness)
     {
         double rd = r / 255.0;
         double gd = g / 255.0;

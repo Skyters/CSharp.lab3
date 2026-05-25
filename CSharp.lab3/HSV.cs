@@ -1,21 +1,23 @@
-﻿public class HSV
+﻿using CSharp.lab3;
+
+public class HSV
 {
     private TrackBar tbHue;
     private TrackBar tbSaturation;
     private TrackBar tbBrightness;
     private PictureBox displayPictureBox;
 
-    public HSV(TrackBar hue, TrackBar saturation, TrackBar brightness, PictureBox pbHSVandRGB)
+    public HSV(TrackBar hue, TrackBar saturation, TrackBar brightness, PictureBox pbHSV)
     {
         this.tbHue = hue;
         this.tbSaturation = saturation;
         this.tbBrightness = brightness;
-        this.displayPictureBox = pbHSVandRGB;
+        this.displayPictureBox = pbHSV;
 
-        InitializeTrackBars();
+        InitializeTrackBarsHSV();
     }
 
-    public void InitializeTrackBars()
+    private void InitializeTrackBarsHSV()
     {
         tbHue.Minimum = 0;
         tbHue.Maximum = 360;
@@ -36,10 +38,11 @@
     public void UpdateColor()
     {
         int hue = tbHue.Value;
-        int saturation = tbSaturation.Value;
-        int brightness = tbBrightness.Value;
 
-        Color color = HsvToRgb(hue, saturation, brightness);
+        var saturation = new Saturation(tbSaturation.Value, tbSaturation) + 0;
+        var brightness = new Brightness(tbBrightness.Value, tbBrightness) + 0;
+
+        Color color = HsvToRgb(hue, saturation.Value, brightness.Value);
         displayPictureBox.BackColor = color;
     }
 
@@ -74,6 +77,4 @@
             (int)(b * 2.55)
         );
     }
-
-
 }
