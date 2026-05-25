@@ -5,17 +5,17 @@
     private TrackBar tbBrightness;
     private PictureBox displayPictureBox;
 
-    public HSV(TrackBar hue, TrackBar saturation, TrackBar brightness, PictureBox pbHSV)
+    public HSV(TrackBar hue, TrackBar saturation, TrackBar brightness, PictureBox pbHSVandRGB)
     {
         this.tbHue = hue;
         this.tbSaturation = saturation;
         this.tbBrightness = brightness;
-        this.displayPictureBox = pbHSV;
+        this.displayPictureBox = pbHSVandRGB;
 
-        InitializeTrackBarsHSV();
+        InitializeTrackBars();
     }
 
-    private void InitializeTrackBarsHSV()
+    public void InitializeTrackBars()
     {
         tbHue.Minimum = 0;
         tbHue.Maximum = 360;
@@ -74,4 +74,6 @@
             (int)(b * 2.55)
         );
     }
+
+
 }

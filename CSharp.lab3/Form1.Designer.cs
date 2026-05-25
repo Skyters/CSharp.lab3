@@ -33,8 +33,6 @@
             lblDirectionSaturation = new Label();
             lblDirectionBrightness = new Label();
             bnTask = new Button();
-            pbHSV = new PictureBox();
-            lblHSV = new Label();
             lblNameTbSaturation = new Label();
             lblNameTbBrightness = new Label();
             tbHue = new TrackBar();
@@ -46,18 +44,17 @@
             lblNameBlue = new Label();
             lblNameRed = new Label();
             lblNameGreen = new Label();
-            pbRGB = new PictureBox();
+            pbHSVandRGB = new PictureBox();
             lblDirectionRed = new Label();
             lblDirectionGreen = new Label();
             lblDirectionBlue = new Label();
             ((System.ComponentModel.ISupportInitialize)tbSaturation).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbBrightness).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbHSV).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbHue).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbBlue).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbRed).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbGreen).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbRGB).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbHSVandRGB).BeginInit();
             SuspendLayout();
             // 
             // tbSaturation
@@ -107,24 +104,6 @@
             bnTask.TabIndex = 12;
             bnTask.Text = "Задание";
             bnTask.UseVisualStyleBackColor = true;
-            // 
-            // pbHSV
-            // 
-            pbHSV.Location = new Point(223, 216);
-            pbHSV.Margin = new Padding(3, 4, 3, 4);
-            pbHSV.Name = "pbHSV";
-            pbHSV.Size = new Size(114, 197);
-            pbHSV.TabIndex = 13;
-            pbHSV.TabStop = false;
-            // 
-            // lblHSV
-            // 
-            lblHSV.AutoSize = true;
-            lblHSV.Location = new Point(223, 192);
-            lblHSV.Name = "lblHSV";
-            lblHSV.Size = new Size(37, 20);
-            lblHSV.TabIndex = 14;
-            lblHSV.Text = "HSV";
             // 
             // lblNameTbSaturation
             // 
@@ -226,13 +205,13 @@
             lblNameGreen.TabIndex = 29;
             lblNameGreen.Text = "Зелёный";
             // 
-            // pbRGB
+            // pbHSVandRGB
             // 
-            pbRGB.Location = new Point(464, 182);
-            pbRGB.Name = "pbRGB";
-            pbRGB.Size = new Size(113, 185);
-            pbRGB.TabIndex = 30;
-            pbRGB.TabStop = false;
+            pbHSVandRGB.Location = new Point(387, 182);
+            pbHSVandRGB.Name = "pbHSVandRGB";
+            pbHSVandRGB.Size = new Size(113, 185);
+            pbHSVandRGB.TabIndex = 30;
+            pbHSVandRGB.TabStop = false;
             // 
             // lblDirectionRed
             // 
@@ -269,7 +248,7 @@
             Controls.Add(lblDirectionBlue);
             Controls.Add(lblDirectionGreen);
             Controls.Add(lblDirectionRed);
-            Controls.Add(pbRGB);
+            Controls.Add(pbHSVandRGB);
             Controls.Add(lblNameGreen);
             Controls.Add(lblNameRed);
             Controls.Add(lblNameBlue);
@@ -281,8 +260,6 @@
             Controls.Add(tbHue);
             Controls.Add(lblNameTbBrightness);
             Controls.Add(lblNameTbSaturation);
-            Controls.Add(lblHSV);
-            Controls.Add(pbHSV);
             Controls.Add(bnTask);
             Controls.Add(lblDirectionBrightness);
             Controls.Add(lblDirectionSaturation);
@@ -293,12 +270,11 @@
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)tbSaturation).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbBrightness).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbHSV).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbHue).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbBlue).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbRed).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbGreen).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbRGB).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbHSVandRGB).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -309,8 +285,6 @@
         private Label lblDirectionSaturation;
         private Label lblDirectionBrightness;
         private Button bnTask;
-        private PictureBox pbHSV;
-        private Label lblHSV;
         private Label lblNameTbSaturation;
         private Label lblNameTbBrightness;
         private TrackBar tbHue;
@@ -322,7 +296,7 @@
         private Label lblNameBlue;
         private Label lblNameRed;
         private Label lblNameGreen;
-        private PictureBox pbRGB;
+        private PictureBox pbHSVandRGB;
         private Label lblDirectionRed;
         private Label lblDirectionGreen;
         private Label lblDirectionBlue;

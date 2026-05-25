@@ -1,117 +1,98 @@
 ﻿using CSharp.lab3;
-using System.Diagnostics.Eventing.Reader;
 
 public class RGB
 {
-    private TrackBar tbHue;
     private TrackBar tbBlue;
     private TrackBar tbGreen;
     private TrackBar tbRed;
+    private TrackBar tbHue;
     private TrackBar tbSaturation;
     private TrackBar tbBrightness;
     private PictureBox displayPictureBox;
 
-    public RGB(TrackBar hue, TrackBar blue, TrackBar red, TrackBar green, TrackBar saturation, TrackBar brightness, PictureBox pbRGB)
+    public RGB(TrackBar blue, TrackBar red, TrackBar green, TrackBar hue, TrackBar saturation, TrackBar brightness, PictureBox pbHSVandRGB)
     {
-        tbHue = hue;
         this.tbBlue = blue;
         this.tbGreen = green;
         this.tbRed = red;
+        this.tbHue = hue;
         this.tbSaturation = saturation;
         this.tbBrightness = brightness;
-        this.displayPictureBox = pbRGB;
+        this.displayPictureBox = pbHSVandRGB;
 
-        InitializeTrackBarsHSV();
+        InitializeTrackBars();
     }
 
-    private void InitializeTrackBarsHSV()
+    private void InitializeTrackBars()
     {
-        tbHue.Minimum = 0;
-        tbHue.Maximum = 360;
-
-        tbBlue.Minimum = 0;
-        tbBlue.Maximum = 255;
-
-        tbGreen.Minimum = 0;
-        tbGreen.Maximum = 255;
-
-        tbRed.Minimum = 0;
-        tbRed.Maximum = 255;
-
-        tbSaturation.Minimum = 0;
-        tbSaturation.Maximum = 100;
-
-        tbBrightness.Minimum = 0;
-        tbBrightness.Maximum = 100;
+        tbRed.Minimum = 0; tbRed.Maximum = 255;
+        tbGreen.Minimum = 0; tbGreen.Maximum = 255;
+        tbBlue.Minimum = 0; tbBlue.Maximum = 255;
 
         UpdateColor();
     }
 
     public void UpdateColor()
     {
-        int hue = tbHue.Value;
-        var blue = new Blue(tbBlue.Value, tbBlue);
-        int green = tbGreen.Value;
-        int red = tbRed.Value;
-        int saturation = tbSaturation.Value;
-        int brightness = tbBrightness.Value;
+        var red = new Red(tbRed.Value, tbRed) + 0;
+        var green = new Green(tbGreen.Value, tbGreen) + 0;
+        var blue = new Blue(tbBlue.Value, tbBlue) + 0;
 
-        Color color = RgbToHsv(hue, red, blue, green, saturation, brightness);
-        displayPictureBox.BackColor = color;
-    }
-   
+        displayPictureBox.BackColor = Color.FromArgb(red.Value, green.Value, blue.Value);
 
-    public double Hue(double red, double blue, double green)
-    {       
-        return (red + blue + green);
+        RgbToHsv(red.Value, green.Value, blue.Value,
+                 out int hue, out int saturation, out int brightness);
+
+        tbHue.Value = Math.Clamp(hue, tbHue.Minimum, tbHue.Maximum);
+        tbSaturation.Value = Math.Clamp(saturation, tbSaturation.Minimum, tbSaturation.Maximum);
+        tbBrightness.Value = Math.Clamp(brightness, tbBrightness.Minimum, tbBrightness.Maximum);
     }
 
-    private Color RgbToHsv(double hue, double red, double blue, double green, double saturation, double brightness)
+    private void RgbToHsv(int r, int g, int b,
+                          out int hue, out int saturation, out int brightness)
     {
-        hue = Hue(red, blue, green);
-        double max = Math.Max(hue, hue);
-        double min = Math.Min(hue, hue);
-        
+        double rd = r / 255.0;
+        double gd = g / 255.0;
+        double bd = b / 255.0;
 
-        if (max == min)
+        double max = Math.Max(rd, Math.Max(gd, bd));
+        double min = Math.Min(rd, Math.Min(gd, bd));
+        double delta = max - min;
+
+        double h = 0;
+
+        if (delta > 0)
         {
-            if (max == red && green >= blue) 
+            if (max == rd)
             {
-                hue = (60 * (green - blue) / (max - min)) + 0;
+                h = 60 * (((gd - bd) / delta) % 6);
             }
-
-            else if  (max == red && green < blue)
+            else if (max == gd)
             {
-                hue = (60 * (green - blue) / (max - min)) + 360;
+                h = 60 * (((bd - rd) / delta) + 2);
             }
-
-            else if (max == green)
-            {
-                hue = (60 * (blue - red) / (max - min)) + 120;
-            }
-
-            else if(max == blue)
-            {
-                hue = (60 * (red - green) / (max - min)) + 240;
-            }
-
-            else if (max == 0)
-            {
-                saturation = 0;
-            }
-
             else
             {
-                saturation = 1 - min / max;
+                h = 60 * (((rd - gd) / delta) + 4);
             }
-
-            brightness = max;
         }
 
-        return Color.FromArgb(
-            (int)(red ),
-            (int)(green),
-            (int)(blue)
-        );
+        if (h < 0)
+        {
+            h += 360;
+        }
+
+        double s = 0;
+
+        if (max > 0)
+        {
+            s = delta / max;
+        }
+
+        double v = max;
+
+        hue = (int)Math.Round(h);
+        saturation = (int)Math.Round(s * 100);
+        brightness = (int)Math.Round(v * 100);
     }
 }

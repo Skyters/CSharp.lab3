@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace CSharp.lab3
 {
@@ -10,24 +7,33 @@ namespace CSharp.lab3
         private int value;
         private TrackBar tbGreen;
 
+        public int Value => value;
+
         public Green(int value, TrackBar tbGreen)
         {
-            this.value = value;
+            this.value = Math.Clamp(value, 0, 255);
             this.tbGreen = tbGreen;
         }
 
-        public static Green operator +(int value, Green green)
+        private Green WithValue(int newValue)
         {
-            var newValue = Math.Clamp(green.value + value, 0, 255);
-
-            return new Green(newValue, green.tbGreen);
+            var clamped = Math.Clamp(newValue, 0, 255);
+            tbGreen.Value = clamped;
+            return new Green(clamped, tbGreen);
         }
 
-        public static Green operator -(int value, Green green)
-        {
-            var newValue = Math.Clamp(green.value - value, 0, 255);
+        public static Green operator +(Green green, int delta)
+            => green.WithValue(green.value + delta);
 
-            return new Green(newValue, green.tbGreen);
-        }
+        public static Green operator +(int delta, Green green)
+            => green.WithValue(green.value + delta);
+
+        public static Green operator -(Green green, int delta)
+            => green.WithValue(green.value - delta);
+
+        public static Green operator -(int delta, Green green)
+            => green.WithValue(delta - green.value);
+
+        public override string ToString() => value.ToString();
     }
 }

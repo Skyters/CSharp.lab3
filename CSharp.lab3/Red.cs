@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CSharp.lab3
 {
@@ -9,24 +7,33 @@ namespace CSharp.lab3
         private int value;
         private TrackBar tbRed;
 
+        public int Value => value;
+
         public Red(int value, TrackBar tbRed)
         {
-            this.value = value;
+            this.value = Math.Clamp(value, 0, 255);
             this.tbRed = tbRed;
         }
 
-        public static Red operator +(int value, Red red)
+        private Red WithValue(int newValue)
         {
-            var newValue = Math.Clamp(red.value + value, 0, 255);
-
-            return new Red(newValue, red.tbRed);
+            var clamped = Math.Clamp(newValue, 0, 255);
+            tbRed.Value = clamped;
+            return new Red(clamped, tbRed);
         }
 
-        public static Red operator -(int value, Red red)
-        {
-            var newValue = Math.Clamp(red.value - value, 0, 255);
+        public static Red operator +(Red red, int delta)
+            => red.WithValue(red.value + delta);
 
-            return new Red(newValue, red.tbRed);
-        }
+        public static Red operator +(int delta, Red red)
+            => red.WithValue(red.value + delta);
+
+        public static Red operator -(Red red, int delta)
+            => red.WithValue(red.value - delta);
+
+        public static Red operator -(int delta, Red red)
+            => red.WithValue(delta - red.value);
+
+        public override string ToString() => value.ToString();
     }
 }
