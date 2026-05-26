@@ -8,60 +8,86 @@ namespace CSharp.lab3
         public Form1()
         {
             InitializeComponent();
-            hsv = new HSV(tbHue, tbSaturation, tbBrightness, pbHSVandRGB);
-            rgb = new RGB(tbBlue, tbRed, tbGreen, tbHue, tbSaturation, tbBrightness, pbHSVandRGB);
+
+            hsv = new HSV();
+            rgb = new RGB();
+
+            InitializeTrackBars();
+            UpdateHsvDisplay();
         }
 
+        private void InitializeTrackBars()
+        {
+            tbHue.Minimum = 0; tbHue.Maximum = 360;
+            tbSaturation.Minimum = 0; tbSaturation.Maximum = 100;
+            tbBrightness.Minimum = 0; tbBrightness.Maximum = 100;
+            tbRed.Minimum = 0; tbRed.Maximum = 255;
+            tbGreen.Minimum = 0; tbGreen.Maximum = 255;
+            tbBlue.Minimum = 0; tbBlue.Maximum = 255;
+
+            tbHue.Value = 0;
+            tbSaturation.Value = 100;
+            tbBrightness.Value = 100;
+        }
 
         private void tbHue_Scroll(object sender, EventArgs e)
         {
             lblDirectionHue.Text = $"{tbHue.Value}°";
-            hsv.UpdateColor();
+            UpdateHsvDisplay();
         }
 
         private void tbSaturation_Scroll(object sender, EventArgs e)
         {
             lblDirectionSaturation.Text = $"{tbSaturation.Value}%";
-            hsv.UpdateColor();
+            UpdateHsvDisplay();
         }
 
         private void tbBrightness_Scroll(object sender, EventArgs e)
         {
             lblDirectionBrightness.Text = $"{tbBrightness.Value}%";
-            hsv.UpdateColor();
+            UpdateHsvDisplay();
         }
 
         private void tbRed_Scroll(object sender, EventArgs e)
         {
             lblDirectionRed.Text = $"{tbRed.Value}";
-            rgb.UpdateColor();
-            SyncHsvLabels();
+            UpdateRgbDisplay();
         }
 
         private void tbGreen_Scroll(object sender, EventArgs e)
         {
             lblDirectionGreen.Text = $"{tbGreen.Value}";
-            rgb.UpdateColor();
-            SyncHsvLabels();
+            UpdateRgbDisplay();
         }
 
         private void tbBlue_Scroll(object sender, EventArgs e)
         {
             lblDirectionBlue.Text = $"{tbBlue.Value}";
-            rgb.UpdateColor();
-            SyncHsvLabels();
+            UpdateRgbDisplay();
         }
 
-        private void SyncHsvLabels()
+
+        private void UpdateHsvDisplay()
         {
+            Color color = hsv.UpdateColor(tbHue.Value, tbSaturation.Value, tbBrightness.Value);
+            pbHSVandRGB.BackColor = color;
+        }
+
+        private void UpdateRgbDisplay()
+        {
+            RgbResult result = rgb.UpdateColor(tbRed.Value, tbGreen.Value, tbBlue.Value);
+
+            pbHSVandRGB.BackColor = result.Color;
+
+            // синхронизация HSV-ползунков
+            tbHue.Value = Math.Clamp(result.Hue, tbHue.Minimum, tbHue.Maximum);
+            tbSaturation.Value = Math.Clamp(result.Saturation, tbSaturation.Minimum, tbSaturation.Maximum);
+            tbBrightness.Value = Math.Clamp(result.Brightness, tbBrightness.Minimum, tbBrightness.Maximum);
+
+            // синхронизация подписи HSV
             lblDirectionHue.Text = $"{tbHue.Value}°";
             lblDirectionSaturation.Text = $"{tbSaturation.Value}%";
             lblDirectionBrightness.Text = $"{tbBrightness.Value}%";
-        }
-
-        private void bnTask_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Цвет заданный в пространстве HSV, а также под каждую характеристику отдельный тип. Реализовать операции:\r\n\r\nДобавление/вычитание красного цвета\r\nДобавление/вычитание синего цвета\r\nДобавление/вычитание зеленого цвета\r\nДобавление/вычитание насыщености\r\nДобавление/вычитание яркости\r\nПеревод в RGB");
         }
     }
 }

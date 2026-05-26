@@ -104,7 +104,7 @@
             bnTask.TabIndex = 12;
             bnTask.Text = "Задание";
             bnTask.UseVisualStyleBackColor = true;
-            bnTask.Click += bnTask_Click;
+            
             // 
             // lblNameTbSaturation
             // 

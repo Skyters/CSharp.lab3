@@ -2,48 +2,12 @@
 
 public class HSV
 {
-    private TrackBar tbHue;
-    private TrackBar tbSaturation;
-    private TrackBar tbBrightness;
-    private PictureBox displayPictureBox;
-
-    public HSV(TrackBar hue, TrackBar saturation, TrackBar brightness, PictureBox pbHSV)
+    public Color UpdateColor(int hue, int saturation, int brightness)
     {
-        this.tbHue = hue;
-        this.tbSaturation = saturation;
-        this.tbBrightness = brightness;
-        this.displayPictureBox = pbHSV;
+        var sat = new Saturation(saturation);
+        var bri = new Brightness(brightness);
 
-        InitializeTrackBarsHSV();
-    }
-
-    private void InitializeTrackBarsHSV()
-    {
-        tbHue.Minimum = 0;
-        tbHue.Maximum = 360;
-
-        tbSaturation.Minimum = 0;
-        tbSaturation.Maximum = 100;
-
-        tbBrightness.Minimum = 0;
-        tbBrightness.Maximum = 100;
-
-        tbHue.Value = 0;
-        tbSaturation.Value = 100;
-        tbBrightness.Value = 100;
-
-        UpdateColor();
-    }
-
-    public void UpdateColor()
-    {
-        int hue = tbHue.Value;
-
-        var saturation = new Saturation(tbSaturation.Value, tbSaturation) + 0;
-        var brightness = new Brightness(tbBrightness.Value, tbBrightness) + 0;
-
-        Color color = HsvToRgb(hue, saturation.Value, brightness.Value);
-        displayPictureBox.BackColor = color;
+        return HsvToRgb(hue, sat.Value, bri.Value);
     }
 
     private Color HsvToRgb(int hue, double saturation, double brightness)
